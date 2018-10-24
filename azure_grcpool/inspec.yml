@@ -5,7 +5,7 @@ copyright: Stefan Johner
 license: Apache-2.0
 summary: An InSpec Compliance Profile for GRC Pool resources running on Azure
 version: 0.1.0
-inspec_version: '>= 2.2.7'
+inspec_version: '>= 2.1.81'
 depends:
   - name: inspec-azure
     url: https://github.com/inspec/inspec-azure/archive/master.tar.gz
