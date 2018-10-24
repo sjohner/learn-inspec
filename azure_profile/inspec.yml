@@ -1,9 +1,9 @@
-name: azure_profile
-title: Learning InSpec with Azure
+name: azure_grcpool
+title: Checking compliance of GRC Pool resources
 maintainer: Stefan Johner
 copyright: Stefan Johner
 license: Apache-2.0
-summary: An InSpec Compliance Profile for Azure resource groups
+summary: An InSpec Compliance Profile for GRC Pool resources running on Azure
 version: 0.1.0
 inspec_version: '>= 2.2.7'
 depends:

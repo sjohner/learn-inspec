@@ -1,14 +1,23 @@
-download inspec from https://downloads.chef.io/inspec
 
-try inspec https://learn.chef.io/modules/try-inspec#/
 
-https://github.com/inspec/inspec-azure
+Working with Infrastructure as Code brings some challanges. 
 
-To allow InSpec to authenticate to your Azure account you will need to [create an Azure service principal](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest).
 
-Make sure you take not of the newly generated access key and create an Azure credentials file in ./azure/credentials
+Chef Inspec helps you to test your infrastructure code once it is deployed in Azure.
 
-The credentials file should have the following structure:
+Inspec can be downloaded for various operating systems from [Inspec website](https://downloads.chef.io/inspec). There is also a very nice online experience where you can [try Inpsec in your browser](https://learn.chef.io/modules/try-inspec#/)
+
+Since Inspec is completely open source you might want to check on its source code with [can be found on Github](https://github.com/inspec/inspec-azure)
+
+If you just want to try Inspec, instead of downloading and installing it manually, I recommend using Azure Cloud Shell. Azure Cloud Shell comes preinstalled with all the nifty tools like Git, Azure CLI and even Inspec.
+
+#I recommend checking out this site for more information on Azure Cloud Shell
+
+After you got your Cloud Shell ready or installed Inspec on your machine, you need to give it access to your Azure resources. To allow InSpec to authenticate to your Azure account you will need to [create an Azure service principal](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest).
+
+Make sure you take note of the newly generated access key. Afterwards create an Azure credentials file in ./azure/credentials
+
+This credentials file should have the following structure:
 
 ```powershell
 [<SUBSCRIPTION_ID>]
@@ -46,7 +55,7 @@ version: 0.1.0
 ```
 
 InSpec Azure resources are available as resource pack and to use them in your controls, you will need to create an inspec profile which depends on the given Azure resource pack.
-Therefor, extend your profile to be dependant on `inspec-azure` resource pack:
+Therefore, extend your profile to be dependant on `inspec-azure` resource pack:
 
 ```ruby
 name: azure_profile
@@ -64,8 +73,8 @@ supports:
   - platform: azure
 ```
 
-Besides the profile you will need a control which defines what InSpec is going to test in your subscription. Create a new file 'exists_resourcegroup.rb' in the controls folder within your profile.
-Add the following content to the file to check if a given resource group exists.
+Besides the profile you will need an Inspec control which defines what InSpec is going to test in your subscription. Create a new file 'exists_resourcegroup.rb' in the controls folder within your profile.
+Add the following content to the file to make sure the control checks if a given resource group exists.
 
 ```ruby
 control 'exists_resourcegroup' do
